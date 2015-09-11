@@ -14,6 +14,7 @@ Mongoid.load!("./mongoid.yml")
 
 require "models/roll"
 require "controllers/application_controller"
+require "controllers/api_controller"
 
 module Moped
   module BSON
