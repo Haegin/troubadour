@@ -12,7 +12,7 @@ class RollStore {
       rolls: [],
     }
 
-    this.ws = new WebSocket("ws://" + window.location.host);
+    this.ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
   }
 
   onListRolls(rolls) {

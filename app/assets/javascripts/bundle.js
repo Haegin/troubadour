@@ -22673,7 +22673,7 @@
 	  _createClass(Rolls, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var socket = new WebSocket("ws://" + window.location.host);
+	      var socket = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
 
 	      socket.onmessage = function (event) {
 	        var message = JSON.parse(event.data);
@@ -23013,7 +23013,7 @@
 	      rolls: []
 	    };
 
-	    this.ws = new WebSocket("ws://" + window.location.host);
+	    this.ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
 	  }
 
 	  _createClass(RollStore, [{

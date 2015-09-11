@@ -10,7 +10,7 @@ class Rolls extends React.Component {
   }
 
   componentDidMount() {
-    let socket = new WebSocket("ws://" + window.location.host);
+    let socket = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
 
     socket.onmessage = (event) => {
       let message = JSON.parse(event.data);
