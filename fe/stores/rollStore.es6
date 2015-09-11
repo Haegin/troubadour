@@ -30,5 +30,5 @@ class RollStore {
   }
 }
 
-const rollStore = alt.createStore(RollStore);
+const rollStore = alt.createStore(RollStore, "RollStore");
 export default rollStore;

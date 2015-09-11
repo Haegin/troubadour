@@ -15,5 +15,5 @@ class NameStore {
   }
 }
 
-const nameStore = alt.createStore(NameStore);
+const nameStore = alt.createStore(NameStore, "NameStore");
 export default nameStore;
