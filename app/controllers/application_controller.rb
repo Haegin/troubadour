@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
   set :sprockets, Sprockets::Environment.new(root)
   set :precompile, [ /\w+\.(?!js|css).+/, /application.(css|js)$/ ]
   set :assets_prefix, "/assets"
-  set :digest_assets, false
+  set :digest_assets, ENV['RACK_ENV'] == "production"
 
   set :sockets, []
 
