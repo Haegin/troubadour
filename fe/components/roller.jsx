@@ -31,6 +31,7 @@ class Roller extends React.Component {
 
   render() {
     return <div id="roller">
+      <h2>Roll Dice</h2>
       <p>
         <label htmlFor="pool">Pool:</label>
         <input id="pool" type="number" min="1" max="10" defaultValue="3" step="1" name="pool" ref="pool" />

@@ -22694,33 +22694,42 @@
 	        return React.createElement(_rollJsx2['default'], { key: roll.id, id: roll.id, roller: roll.roller, results: roll.results, target: roll.target, successes: roll.successes });
 	      });
 	      return React.createElement(
-	        'table',
-	        { id: 'rolls' },
+	        'div',
+	        { id: 'rollResults' },
 	        React.createElement(
-	          'tr',
+	          'h2',
 	          null,
-	          React.createElement(
-	            'th',
-	            null,
-	            'Person'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Results'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Target'
-	          ),
-	          React.createElement(
-	            'th',
-	            null,
-	            'Successes'
-	          )
+	          'Roll Results'
 	        ),
-	        rolls
+	        React.createElement(
+	          'table',
+	          { id: 'rolls' },
+	          React.createElement(
+	            'tr',
+	            null,
+	            React.createElement(
+	              'th',
+	              null,
+	              'Person'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Results'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Target'
+	            ),
+	            React.createElement(
+	              'th',
+	              null,
+	              'Successes'
+	            )
+	          ),
+	          rolls
+	        )
 	      );
 	    }
 	  }], [{
@@ -22746,19 +22755,25 @@
 /* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _classnames = __webpack_require__(241);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
 
 	var Roll = (function (_React$Component) {
 	  _inherits(Roll, _React$Component);
@@ -22766,32 +22781,36 @@
 	  function Roll(props) {
 	    _classCallCheck(this, Roll);
 
-	    _get(Object.getPrototypeOf(Roll.prototype), "constructor", this).call(this, props);
+	    _get(Object.getPrototypeOf(Roll.prototype), 'constructor', this).call(this, props);
 	  }
 
 	  _createClass(Roll, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      var classes = (0, _classnames2['default'])('roll', {
+	        success: parseInt(this.props.successes) > 0,
+	        botch: this.props.successes == "botch"
+	      });
 	      return React.createElement(
-	        "tr",
-	        { className: "roll", id: this.props.id },
+	        'tr',
+	        { className: classes, id: this.props.id },
 	        React.createElement(
-	          "td",
+	          'td',
 	          null,
 	          this.props.roller
 	        ),
 	        React.createElement(
-	          "td",
+	          'td',
 	          null,
 	          _(this.props.results).join(", ")
 	        ),
 	        React.createElement(
-	          "td",
+	          'td',
 	          null,
 	          this.props.target
 	        ),
 	        React.createElement(
-	          "td",
+	          'td',
 	          null,
 	          this.props.successes
 	        )
@@ -22802,8 +22821,8 @@
 	  return Roll;
 	})(React.Component);
 
-	exports["default"] = Roll;
-	module.exports = exports["default"];
+	exports['default'] = Roll;
+	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
@@ -23038,7 +23057,7 @@
 	  return RollStore;
 	})();
 
-	var rollStore = _altEs62['default'].createStore(RollStore);
+	var rollStore = _altEs62['default'].createStore(RollStore, "RollStore");
 	exports['default'] = rollStore;
 	module.exports = exports['default'];
 
@@ -37409,6 +37428,11 @@
 	        'div',
 	        { id: 'roller' },
 	        React.createElement(
+	          'h2',
+	          null,
+	          'Roll Dice'
+	        ),
+	        React.createElement(
 	          'p',
 	          null,
 	          React.createElement(
@@ -37532,7 +37556,7 @@
 	  return NameStore;
 	})();
 
-	var nameStore = _altEs62['default'].createStore(NameStore);
+	var nameStore = _altEs62['default'].createStore(NameStore, "NameStore");
 	exports['default'] = nameStore;
 	module.exports = exports['default'];
 
@@ -40646,6 +40670,61 @@
 	}
 
 	module.exports = runRouter;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+
+	(function () {
+		'use strict';
+
+		function classNames () {
+
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if ('string' === argType || 'number' === argType) {
+					classes += ' ' + arg;
+
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+
+				} else if ('object' === argType) {
+					for (var key in arg) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true){
+			// AMD. Register as an anonymous module.
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+
+	}());
+
 
 /***/ }
 /******/ ]);

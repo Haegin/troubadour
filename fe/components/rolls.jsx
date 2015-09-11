@@ -37,10 +37,13 @@ class Rolls extends React.Component {
     var rolls = this.props.rolls.map(roll => {
       return (<Roll key={roll.id} id={roll.id} roller={roll.roller} results={roll.results} target={roll.target} successes={roll.successes} />);
     });
-    return <table id="rolls">
+    return <div id="rollResults">
+      <h2>Roll Results</h2>
+      <table id="rolls">
       <tr><th>Person</th><th>Results</th><th>Target</th><th>Successes</th></tr>
       {rolls}
-    </table>;
+    </table>
+  </div>;
   }
 }
 

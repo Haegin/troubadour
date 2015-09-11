@@ -2,15 +2,37 @@ body {
   font-family: sans-serif;
 }
 
+#container {
+  width: 60%;
+  margin: auto;
+}
+
 #roller {
-  border: 1px solid #ccc;
+  float: right;
+  padding: 1em;
   label {
     width: 200px;
     display: inline-block;
   }
-
 }
 
 table {
-  
+  border-collapse: collapse;
+  th {
+    border-bottom: 1px solid black;
+    padding: 1em;
+  }
+  td {
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+    &:nth-child(3), &:nth-child(4) {
+      text-align: center;
+    }
+  }
+  tr.success {
+    background-color: #cfc;
+  }
+  tr.botch {
+    background-color: #fcc;
+  }
 }
