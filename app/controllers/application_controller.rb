@@ -16,6 +16,8 @@ class ApplicationController < Sinatra::Base
     end
     sprockets.append_path File.join("vendor", "assets", "components")
 
+    sprockets.js_compressor = :uglify if ENV['RACK_ENV'] == "production"
+
     Sprockets::Helpers.configure do |config|
       config.environment = sprockets
       config.prefix = assets_prefix
