@@ -6,8 +6,8 @@ var RouteHandler = Router.RouteHandler;
 export default class App extends React.Component {
   render() {
     return <div id="app">
-      <Rolls />
       <Roller />
+      <Rolls />
     </div>
   }
 }

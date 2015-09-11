@@ -8,6 +8,8 @@ class ApplicationController < Sinatra::Base
   set :assets_prefix, "/assets"
   set :digest_assets, false
 
+  set :sockets, []
+
   configure do
     %w{javascripts stylesheets images fonts}.each do |type|
       sprockets.append_path File.join("app", "assets", type)
@@ -32,6 +34,22 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :app
+    if !request.websocket?
+      erb :app
+    else
+      request.websocket do |ws|
+        ws.onopen do
+          settings.sockets << ws
+        end
+
+        ws.onmessage do |msg|
+          EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+        end
+
+        ws.onclose do
+          settings.sockets.delete(ws)
+        end
+      end
+    end
   end
 end

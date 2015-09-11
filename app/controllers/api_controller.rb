@@ -13,7 +13,8 @@ class ApiController < Sinatra::Base
 
   resource :rolls do
     get do
-      Roll.order_by(_id: "desc").map(&:to_hash).to_json
+      limit = [Integer(params[:limit]) || 10, 50].min
+      Roll.order_by(_id: "desc").limit(limit).map(&:to_hash).to_json
     end
 
     post do

@@ -1,6 +1,9 @@
 import rollActions from '../actions/rollActions.es6';
+import nameActions from '../actions/nameActions.es6';
+import nameStore from '../stores/nameStore.es6';
+import connectToStores from 'alt/utils/connectToStores';
 
-export default class Roller extends React.Component {
+class Roller extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,12 +15,39 @@ export default class Roller extends React.Component {
     rollActions.rollDice(pool, target, roller);
   }
 
+  changeName(evt) {
+    let roller = React.findDOMNode(this.refs.roller).value;
+    nameActions.setName(roller);
+  }
+
+  static getStores() {
+    return [nameStore];
+  }
+
+  static getPropsFromStores() {
+    return nameStore.getState()
+  }
+
+
   render() {
     return <div id="roller">
-      <label>Pool:<input type="number" min="1" max="10" defaultValue="3" step="1" name="pool" ref="pool" /></label>
-      <label>Target Number:<input type="number" min="1" max="10" defaultValue="6" step="1" name="target" ref="target" /></label>
-      <label>Name:<input name="roller" ref="roller" /></label>
-      <input type="button" onClick={this.roll.bind(this)} value="Roll!" name="roll" />
+      <p>
+        <label htmlFor="pool">Pool:</label>
+        <input id="pool" type="number" min="1" max="10" defaultValue="3" step="1" name="pool" ref="pool" />
+      </p>
+      <p>
+        <label htmlFor="target">Target Number:</label>
+        <input id="target" type="number" min="1" max="10" defaultValue="6" step="1" name="target" ref="target" />
+      </p>
+      <p>
+        <label htmlFor="name">Name:</label>
+        <input id="name" name="roller" ref="roller" value={this.props.name} onChange={this.changeName.bind(this)} />
+      </p>
+      <p>
+        <input type="button" onClick={this.roll.bind(this)} value="Roll!" name="roll" />
+      </p>
     </div>
   }
 }
+
+export default connectToStores(Roller)

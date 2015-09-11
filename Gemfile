@@ -10,6 +10,7 @@ gem "sass"
 gem "uglifier"
 gem "therubyracer"
 gem "rack-contrib"
+gem "sinatra-websocket"
 
 group :development do
   gem "sinatra-contrib", require: "sinatra/reloader"

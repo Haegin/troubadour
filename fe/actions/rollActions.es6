@@ -2,26 +2,13 @@ import alt from '../alt.es6';
 import _ from 'lodash';
 
 class RollActions {
-  // addRoll(listId, name) {
-  //   return (dispatch) => {
-  //     fetch('/lists/' + listId + '/items', {
-  //       method: 'post',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ item: { name: name } })
-  //     }).then(response => {
-  //       return response.json();
-  //     }).then(data => {
-  //       dispatch([data.id, data.name]);
-  //     });
-  //   }
-  // }
+  constructor() {
+    this.generateActions('getRoll');
+  }
 
   listRolls() {
     return (dispatch) => {
-      fetch('/api/rolls').then(response => {
+      fetch('/api/rolls?limit=10').then(response => {
         return response.json();
       }).then(data => {
         dispatch(data);

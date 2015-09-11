@@ -6,10 +6,13 @@ class RollStore {
   constructor() {
     this.bindAction(rollActions.listRolls, this.onListRolls);
     this.bindAction(rollActions.rollDice, this.onRollDice);
+    this.bindAction(rollActions.getRoll, this.onGetRoll);
 
     this.state = {
       rolls: [],
     }
+
+    this.ws = new WebSocket("ws://" + window.location.host);
   }
 
   onListRolls(rolls) {
@@ -17,9 +20,13 @@ class RollStore {
   }
 
   onRollDice(roll) {
+    this.ws.send(JSON.stringify({ type: "roll", data: roll }));
+  }
+
+  onGetRoll(roll) {
     let newRolls = this.state.rolls
     newRolls.unshift(roll)
-    this.setState({ rolls: newRolls });
+    this.setState({ rolls: _.take(newRolls, 10) });
   }
 }
 

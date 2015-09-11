@@ -9,6 +9,22 @@ class Rolls extends React.Component {
     rollActions.listRolls();
   }
 
+  componentDidMount() {
+    let socket = new WebSocket("ws://" + window.location.host);
+
+    socket.onmessage = (event) => {
+      let message = JSON.parse(event.data);
+
+      switch(message.type) {
+        case "roll":
+          rollActions.getRoll(message.data);
+          break;
+        default:
+          console.log("Unknown WebSocket message: ", message)
+      }
+    };
+  }
+
   static getStores() {
     return [rollStore];
   }
