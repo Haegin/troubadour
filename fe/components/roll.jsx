@@ -12,7 +12,7 @@ export default class Roll extends React.Component {
     })
     return <tr className={classes} id={this.props.id}>
       <td>{this.props.roller}</td>
-      <td>{_(this.props.results).join(", ")}</td>
+      <td className="optional">{_(this.props.results).join(", ")}</td>
       <td>{this.props.target}</td>
       <td>{this.props.successes}</td>
     </tr>

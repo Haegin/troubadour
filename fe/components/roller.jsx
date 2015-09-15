@@ -2,6 +2,8 @@ import rollActions from '../actions/rollActions.es6';
 import nameActions from '../actions/nameActions.es6';
 import nameStore from '../stores/nameStore.es6';
 import connectToStores from 'alt/utils/connectToStores';
+import NumberInput from './numberInput.jsx';
+import TextInput from './textInput.jsx';
 
 class Roller extends React.Component {
   constructor(props) {
@@ -9,15 +11,14 @@ class Roller extends React.Component {
   }
 
   roll(evt) {
-    let pool = React.findDOMNode(this.refs.pool).value;
-    let target = React.findDOMNode(this.refs.target).value;
-    let roller = React.findDOMNode(this.refs.roller).value;
+    let pool = this.refs.pool.value();
+    let target = this.refs.target.value();
+    let roller = this.refs.roller.value();
     rollActions.rollDice(pool, target, roller);
   }
 
-  changeName(evt) {
-    let roller = React.findDOMNode(this.refs.roller).value;
-    nameActions.setName(roller);
+  changeName(name) {
+    nameActions.setName(name);
   }
 
   static getStores() {
@@ -28,23 +29,13 @@ class Roller extends React.Component {
     return nameStore.getState()
   }
 
-
   render() {
     return <div id="roller">
-      <h2>Roll Dice</h2>
-      <p>
-        <label htmlFor="pool">Pool:</label>
-        <input id="pool" type="number" min="1" max="10" defaultValue="3" step="1" name="pool" ref="pool" />
-      </p>
-      <p>
-        <label htmlFor="target">Target Number:</label>
-        <input id="target" type="number" min="1" max="10" defaultValue="6" step="1" name="target" ref="target" />
-      </p>
-      <p>
-        <label htmlFor="name">Name:</label>
-        <input id="name" name="roller" ref="roller" value={this.props.name} onChange={this.changeName.bind(this)} />
-      </p>
-      <p>
+      <h2>Roll</h2>
+      <NumberInput ref="pool" name="Pool" default={3} />
+      <NumberInput ref="target" name="Target" default={6} />
+      <TextInput ref="roller" name="Roller" onChange={this.changeName.bind(this)} default={this.props.name} />
+      <p className="button">
         <input type="button" onClick={this.roll.bind(this)} value="Roll!" name="roll" />
       </p>
     </div>
