@@ -6,7 +6,7 @@ class RollStore {
   constructor() {
     this.bindAction(rollActions.listRolls, this.onListRolls);
     this.bindAction(rollActions.rollDice, this.onRollDice);
-    this.bindAction(rollActions.getRoll, this.onGetRoll);
+    this.bindAction(rollActions.sendDice, this.onGetRoll);
 
     this.state = {
       rolls: [],

@@ -23093,7 +23093,7 @@
 
 	    this.bindAction(_actionsRollActionsEs62['default'].listRolls, this.onListRolls);
 	    this.bindAction(_actionsRollActionsEs62['default'].rollDice, this.onRollDice);
-	    this.bindAction(_actionsRollActionsEs62['default'].getRoll, this.onGetRoll);
+	    this.bindAction(_actionsRollActionsEs62['default'].sendDice, this.onGetRoll);
 
 	    this.state = {
 	      rolls: []
@@ -23173,8 +23173,13 @@
 	  }, {
 	    key: 'rollDice',
 	    value: function rollDice(pool, target, roller) {
+	      var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10, false));
+	      this.sendDice(pool, target, roller, results);
+	    }
+	  }, {
+	    key: 'sendDice',
+	    value: function sendDice(pool, target, roller, rolls) {
 	      return function (dispatch) {
-	        var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10));
 	        fetch('/api/rolls', {
 	          method: 'post',
 	          headers: {
@@ -23183,7 +23188,7 @@
 	          },
 	          body: JSON.stringify({ roll: {
 	              target: target,
-	              results: results,
+	              results: rolls,
 	              roller: roller
 	            } })
 	        }).then(function (response) {
@@ -37488,7 +37493,16 @@
 	      var pool = this.refs.pool.value();
 	      var target = this.refs.target.value();
 	      var roller = this.refs.roller.value();
-	      _actionsRollActionsEs62['default'].rollDice(pool, target, roller);
+	      var rolls = this.refs.rolls.value();
+	      if (rolls !== "") {
+	        rolls = rolls.split("").map(function (i) {
+	          i = parseInt(i);
+	          return i == 0 ? 10 : i;
+	        });
+	        _actionsRollActionsEs62['default'].sendDice(pool, target, roller, rolls);
+	      } else {
+	        _actionsRollActionsEs62['default'].rollDice(pool, target, roller);
+	      };
 	    }
 	  }, {
 	    key: 'changeName',
@@ -37509,6 +37523,7 @@
 	        React.createElement(_numberInputJsx2['default'], { ref: 'pool', name: 'Pool', 'default': 3 }),
 	        React.createElement(_numberInputJsx2['default'], { ref: 'target', name: 'Target', 'default': 6 }),
 	        React.createElement(_textInputJsx2['default'], { ref: 'roller', name: 'Roller', onChange: this.changeName.bind(this), 'default': this.props.name }),
+	        React.createElement(_textInputJsx2['default'], { ref: 'rolls', name: 'Rolls' }),
 	        React.createElement(
 	          'p',
 	          { className: 'button' },
@@ -37818,12 +37833,16 @@
 	exports["default"] = TextInput;
 
 	TextInput.defaultProps = {
-	  "default": ""
+	  "default": "",
+	  onChange: function onChange(val) {
+	    return val;
+	  }
 	};
 
 	TextInput.propTypes = {
 	  "default": React.PropTypes.string,
-	  name: React.PropTypes.string
+	  name: React.PropTypes.string,
+	  onChange: React.PropTypes.func
 	};
 	module.exports = exports["default"];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))

@@ -14,7 +14,16 @@ class Roller extends React.Component {
     let pool = this.refs.pool.value();
     let target = this.refs.target.value();
     let roller = this.refs.roller.value();
-    rollActions.rollDice(pool, target, roller);
+    let rolls = this.refs.rolls.value();
+    if (rolls !== "") {
+      rolls = rolls.split("").map(i => {
+        i = parseInt(i)
+        return i == 0 ? 10 : i;
+      });
+      rollActions.sendDice(pool, target, roller, rolls);
+    } else {
+      rollActions.rollDice(pool, target, roller);
+    };
   }
 
   changeName(name) {
@@ -35,6 +44,7 @@ class Roller extends React.Component {
       <NumberInput ref="pool" name="Pool" default={3} />
       <NumberInput ref="target" name="Target" default={6} />
       <TextInput ref="roller" name="Roller" onChange={this.changeName.bind(this)} default={this.props.name} />
+      <TextInput ref="rolls" name="Rolls" />
       <p className="button">
         <input type="button" onClick={this.roll.bind(this)} value="Roll!" name="roll" />
       </p>

@@ -17,8 +17,12 @@ class RollActions {
   }
 
   rollDice(pool, target, roller) {
+    let results = _.times(pool, _.partial(_.random, 1, 10, false));
+    this.sendDice(pool, target, roller, results);
+  }
+
+  sendDice(pool, target, roller, rolls) {
     return (dispatch) => {
-      let results = _.times(pool, _.partial(_.random, 1, 10));
       fetch('/api/rolls', {
         method: 'post',
         headers: {
@@ -27,7 +31,7 @@ class RollActions {
         },
         body: JSON.stringify({ roll: {
           target: target,
-          results: results,
+          results: rolls,
           roller: roller
         }})
       }).then(response => {

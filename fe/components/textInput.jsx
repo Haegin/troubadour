@@ -34,9 +34,11 @@ export default class TextInput extends React.Component {
 
 TextInput.defaultProps = {
   default: "",
+  onChange: val => { return val; }
 }
 
 TextInput.propTypes = {
   default: React.PropTypes.string,
-  name: React.PropTypes.string
+  name: React.PropTypes.string,
+  onChange: React.PropTypes.func
 }
