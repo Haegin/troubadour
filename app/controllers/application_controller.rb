@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
             settings.sockets.each { |s| s.send({type: "ping"}.to_json) }
           end
         end
-        sleep 3
+        sleep 15
       end
     end
   end
