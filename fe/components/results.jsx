@@ -16,6 +16,9 @@ class Results extends React.Component {
       let message = JSON.parse(event.data);
 
       switch(message.type) {
+        case "ping":
+          socket.send(JSON.stringify({type: "pong"}));
+          break;
         case "roll":
           rollActions.getRoll(message.data);
           break;

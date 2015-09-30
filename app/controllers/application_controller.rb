@@ -24,6 +24,17 @@ class ApplicationController < Sinatra::Base
       config.digest = digest_assets
       config.public_path = public_folder
     end
+
+    Thread.new do
+      loop do
+        EM.next_tick do
+          if settings.sockets.length > 0
+            settings.sockets.each { |s| s.send({type: "ping"}.to_json) }
+          end
+        end
+        sleep 3
+      end
+    end
   end
 
   helpers do
@@ -45,7 +56,9 @@ class ApplicationController < Sinatra::Base
         end
 
         ws.onmessage do |msg|
-          EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+          unless msg =~ /pong|ping/
+            EM.next_tick { settings.sockets.each { |s| s.send(msg) } }
+          end
         end
 
         ws.onclose do
