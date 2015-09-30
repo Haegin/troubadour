@@ -23174,7 +23174,7 @@
 	    key: 'rollDice',
 	    value: function rollDice(pool, target, roller) {
 	      return function (dispatch) {
-	        var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10, false));
+	        var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10));
 	        fetch('/api/rolls', {
 	          method: 'post',
 	          headers: {

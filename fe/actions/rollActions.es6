@@ -18,7 +18,7 @@ class RollActions {
 
   rollDice(pool, target, roller) {
     return (dispatch) => {
-      let results = _.times(pool, _.partial(_.random, 1, 10, false));
+      let results = _.times(pool, _.partial(_.random, 1, 10));
       fetch('/api/rolls', {
         method: 'post',
         headers: {
