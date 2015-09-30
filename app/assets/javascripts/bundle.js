@@ -23093,6 +23093,7 @@
 
 	    this.bindAction(_actionsRollActionsEs62['default'].listRolls, this.onListRolls);
 	    this.bindAction(_actionsRollActionsEs62['default'].rollDice, this.onRollDice);
+	    this.bindAction(_actionsRollActionsEs62['default'].getRoll, this.onGetRoll);
 	    this.bindAction(_actionsRollActionsEs62['default'].sendDice, this.onGetRoll);
 
 	    this.state = {
@@ -23173,8 +23174,25 @@
 	  }, {
 	    key: 'rollDice',
 	    value: function rollDice(pool, target, roller) {
-	      var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10, false));
-	      this.sendDice(pool, target, roller, results);
+	      return function (dispatch) {
+	        var results = _lodash2['default'].times(pool, _lodash2['default'].partial(_lodash2['default'].random, 1, 10, false));
+	        fetch('/api/rolls', {
+	          method: 'post',
+	          headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	          },
+	          body: JSON.stringify({ roll: {
+	              target: target,
+	              results: results,
+	              roller: roller
+	            } })
+	        }).then(function (response) {
+	          return response.json();
+	        }).then(function (data) {
+	          dispatch(data);
+	        });
+	      };
 	    }
 	  }, {
 	    key: 'sendDice',
