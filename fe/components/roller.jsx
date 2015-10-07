@@ -41,7 +41,7 @@ class Roller extends React.Component {
   render() {
     return <div id="roller">
       <h2>Roll</h2>
-      <NumberInput ref="pool" name="Pool" default={3} />
+      <NumberInput ref="pool" name="Pool" default={3} max={11} />
       <NumberInput ref="target" name="Target" default={6} />
       <TextInput ref="roller" name="Roller" onChange={this.changeName.bind(this)} default={this.props.name} />
       <TextInput ref="rolls" name="Rolls" />

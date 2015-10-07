@@ -37540,7 +37540,7 @@
 	          null,
 	          'Roll'
 	        ),
-	        React.createElement(_numberInputJsx2['default'], { ref: 'pool', name: 'Pool', 'default': 3 }),
+	        React.createElement(_numberInputJsx2['default'], { ref: 'pool', name: 'Pool', 'default': 3, max: 11 }),
 	        React.createElement(_numberInputJsx2['default'], { ref: 'target', name: 'Target', 'default': 6 }),
 	        React.createElement(_textInputJsx2['default'], { ref: 'roller', name: 'Roller', onChange: this.changeName.bind(this), 'default': this.props.name }),
 	        React.createElement(_textInputJsx2['default'], { ref: 'rolls', name: 'Rolls' }),
