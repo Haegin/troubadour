@@ -22814,7 +22814,9 @@
 	        React.createElement(
 	          'td',
 	          { className: 'optional' },
-	          _(this.props.results).join(", ")
+	          _(this.props.results.sort(function (a, b) {
+	            return a - b;
+	          })).join(", ")
 	        ),
 	        React.createElement(
 	          'td',
