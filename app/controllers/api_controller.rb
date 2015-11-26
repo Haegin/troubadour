@@ -48,5 +48,11 @@ class ApiController < Sinatra::Base
       init.update(result: params[:initiative][:result])
       init.to_hash.to_json
     end
+
+    member do
+      delete do |id|
+        Initiative.find(id).destroy
+      end
+    end
   end
 end
