@@ -22,8 +22,6 @@ class Results extends React.Component {
         case "roll":
           rollActions.getRoll(message.data);
           break;
-        default:
-          console.log("Unknown WebSocket message: ", message)
       }
     };
   }

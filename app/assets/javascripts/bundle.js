@@ -22590,6 +22590,10 @@
 
 	var _rollerJsx2 = _interopRequireDefault(_rollerJsx);
 
+	var _initiativeListJsx = __webpack_require__(247);
+
+	var _initiativeListJsx2 = _interopRequireDefault(_initiativeListJsx);
+
 	var _reactRouter = __webpack_require__(205);
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
@@ -22619,7 +22623,12 @@
 	        React.createElement(
 	          'div',
 	          { id: 'app' },
-	          React.createElement(_rollerJsx2['default'], null),
+	          React.createElement(
+	            'div',
+	            { id: 'sidebar' },
+	            React.createElement(_rollerJsx2['default'], null),
+	            React.createElement(_initiativeListJsx2['default'], null)
+	          ),
 	          React.createElement(_resultsJsx2['default'], null)
 	        )
 	      );
@@ -22694,8 +22703,6 @@
 	          case "roll":
 	            _actionsRollActionsEs62['default'].getRoll(message.data);
 	            break;
-	          default:
-	            console.log("Unknown WebSocket message: ", message);
 	        }
 	      };
 	    }
@@ -40977,6 +40984,377 @@
 	}
 
 	module.exports = runRouter;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _classnames = __webpack_require__(178);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _storesNameStoreEs6 = __webpack_require__(202);
+
+	var _storesNameStoreEs62 = _interopRequireDefault(_storesNameStoreEs6);
+
+	var _altUtilsConnectToStores = __webpack_require__(179);
+
+	var _altUtilsConnectToStores2 = _interopRequireDefault(_altUtilsConnectToStores);
+
+	var Initiative = (function (_React$Component) {
+	  _inherits(Initiative, _React$Component);
+
+	  function Initiative(props) {
+	    _classCallCheck(this, Initiative);
+
+	    _get(Object.getPrototypeOf(Initiative.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _createClass(Initiative, [{
+	    key: 'render',
+	    value: function render() {
+	      var classes = (0, _classnames2['default'])('initiative', {
+	        mine: this.props.currentUser.name == this.props.name
+	      });
+	      return React.createElement(
+	        'tr',
+	        { className: classes, id: this.props.id },
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.name
+	        ),
+	        React.createElement(
+	          'td',
+	          null,
+	          this.props.result
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'getStores',
+	    value: function getStores() {
+	      return [_storesNameStoreEs62['default']];
+	    }
+	  }, {
+	    key: 'getPropsFromStores',
+	    value: function getPropsFromStores() {
+	      return { currentUser: _storesNameStoreEs62['default'].getState() };
+	    }
+	  }]);
+
+	  return Initiative;
+	})(React.Component);
+
+	exports['default'] = (0, _altUtilsConnectToStores2['default'])(Initiative);
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _actionsInitiativeActionsEs6 = __webpack_require__(246);
+
+	var _actionsInitiativeActionsEs62 = _interopRequireDefault(_actionsInitiativeActionsEs6);
+
+	var _altEs6 = __webpack_require__(185);
+
+	var _altEs62 = _interopRequireDefault(_altEs6);
+
+	var _lodash = __webpack_require__(198);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var InitiativeStore = (function () {
+	  function InitiativeStore() {
+	    _classCallCheck(this, InitiativeStore);
+
+	    this.bindAction(_actionsInitiativeActionsEs62['default'].setBonus, this.setBonus);
+	    this.bindAction(_actionsInitiativeActionsEs62['default'].listInitiatives, this.listInitiatives);
+	    this.bindAction(_actionsInitiativeActionsEs62['default'].changeInitiative, this.changeInitiative);
+	    this.bindAction(_actionsInitiativeActionsEs62['default'].roll, this.roll);
+
+	    this.state = {
+	      bonus: localStorage.getItem("initiativeMod") || 3,
+	      initiatives: []
+	    };
+
+	    this.ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
+	  }
+
+	  _createClass(InitiativeStore, [{
+	    key: 'setBonus',
+	    value: function setBonus(bonus) {
+	      localStorage.setItem("initiativeMod", bonus);
+	      this.setState({ bonus: bonus });
+	    }
+	  }, {
+	    key: 'listInitiatives',
+	    value: function listInitiatives(initiatives) {
+	      this.setState({ initiatives: initiatives });
+	    }
+	  }, {
+	    key: 'roll',
+	    value: function roll(initiative) {
+	      this.ws.send(JSON.stringify({ type: "initiative", data: initiative }));
+	    }
+	  }, {
+	    key: 'changeInitiative',
+	    value: function changeInitiative(update) {
+	      var updated = false;
+	      var newInitiatives = this.state.initiatives.map(function (initiative) {
+	        if (update.name == initiative.name) {
+	          updated = true;
+	          return update;
+	        } else {
+	          return initiative;
+	        }
+	      }, []);
+	      if (!updated) {
+	        newInitiatives.push(update);
+	      }
+	      this.setState({ initiatives: newInitiatives });
+	    }
+	  }]);
+
+	  return InitiativeStore;
+	})();
+
+	var initiativeStore = _altEs62['default'].createStore(InitiativeStore, "InitiativeStore");
+	exports['default'] = initiativeStore;
+	module.exports = exports['default'];
+
+/***/ },
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(fetch) {'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _altEs6 = __webpack_require__(185);
+
+	var _altEs62 = _interopRequireDefault(_altEs6);
+
+	var _lodash = __webpack_require__(198);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var InitiativeActions = (function () {
+	  function InitiativeActions() {
+	    _classCallCheck(this, InitiativeActions);
+
+	    this.generateActions('setBonus', 'changeInitiative');
+	  }
+
+	  _createClass(InitiativeActions, [{
+	    key: 'listInitiatives',
+	    value: function listInitiatives() {
+	      return function (dispatch) {
+	        fetch('/api/initiatives').then(function (response) {
+	          return response.json();
+	        }).then(function (data) {
+	          dispatch(data);
+	        });
+	      };
+	    }
+	  }, {
+	    key: 'roll',
+	    value: function roll(name, bonus) {
+	      return function (dispatch) {
+	        fetch('/api/initiatives', {
+	          method: 'post',
+	          headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	          },
+	          body: JSON.stringify({ initiative: {
+	              name: name,
+	              result: _lodash2['default'].random(1, 10, false) + bonus
+	            } })
+	        }).then(function (response) {
+	          return response.json();
+	        }).then(function (data) {
+	          dispatch(data);
+	        });
+	      };
+	    }
+	  }]);
+
+	  return InitiativeActions;
+	})();
+
+	var initiativeActions = _altEs62['default'].createActions(InitiativeActions);
+	exports['default'] = initiativeActions;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(184)))
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _storesNameStoreEs6 = __webpack_require__(202);
+
+	var _storesNameStoreEs62 = _interopRequireDefault(_storesNameStoreEs6);
+
+	var _storesInitiativeStoreEs6 = __webpack_require__(245);
+
+	var _storesInitiativeStoreEs62 = _interopRequireDefault(_storesInitiativeStoreEs6);
+
+	var _actionsInitiativeActionsEs6 = __webpack_require__(246);
+
+	var _actionsInitiativeActionsEs62 = _interopRequireDefault(_actionsInitiativeActionsEs6);
+
+	var _altUtilsConnectToStores = __webpack_require__(179);
+
+	var _altUtilsConnectToStores2 = _interopRequireDefault(_altUtilsConnectToStores);
+
+	var _numberInputJsx = __webpack_require__(203);
+
+	var _numberInputJsx2 = _interopRequireDefault(_numberInputJsx);
+
+	var _initiativeJsx = __webpack_require__(244);
+
+	var _initiativeJsx2 = _interopRequireDefault(_initiativeJsx);
+
+	var InitiativeList = (function (_React$Component) {
+	  _inherits(InitiativeList, _React$Component);
+
+	  function InitiativeList(props) {
+	    _classCallCheck(this, InitiativeList);
+
+	    _get(Object.getPrototypeOf(InitiativeList.prototype), 'constructor', this).call(this, props);
+	    _actionsInitiativeActionsEs62['default'].listInitiatives();
+	  }
+
+	  _createClass(InitiativeList, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var socket = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
+
+	      socket.onmessage = function (event) {
+	        var message = JSON.parse(event.data);
+
+	        switch (message.type) {
+	          case "initiative":
+	            _actionsInitiativeActionsEs62['default'].changeInitiative(message.data);
+	            break;
+	        }
+	      };
+	    }
+	  }, {
+	    key: 'roll',
+	    value: function roll(evt) {
+	      var name = this.props.name;
+	      var bonus = this.props.bonus;
+	      _actionsInitiativeActionsEs62['default'].roll(name, bonus);
+	    }
+	  }, {
+	    key: 'changeBonus',
+	    value: function changeBonus(evt) {
+	      var bonus = this.refs.bonus.value();
+	      _actionsInitiativeActionsEs62['default'].setBonus(bonus);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var initiatives = this.props.initiatives.map(function (initiative) {
+	        return React.createElement(_initiativeJsx2['default'], { key: initiative.id, id: initiative.id, name: initiative.name, result: initiative.result });
+	      });
+	      return React.createElement(
+	        'div',
+	        { id: 'initiative' },
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Initiative'
+	        ),
+	        React.createElement(_numberInputJsx2['default'], { ref: 'bonus', name: 'Bonus', onChange: this.changeBonus.bind(this), 'default': this.props.bonus, max: 5 }),
+	        React.createElement(
+	          'table',
+	          null,
+	          initiatives
+	        ),
+	        React.createElement(
+	          'p',
+	          { className: 'button' },
+	          React.createElement('input', { type: 'button', onClick: this.roll.bind(this), value: 'Fight!', name: 'roll' })
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'getStores',
+	    value: function getStores() {
+	      return [_storesNameStoreEs62['default'], _storesInitiativeStoreEs62['default']];
+	    }
+	  }, {
+	    key: 'getPropsFromStores',
+	    value: function getPropsFromStores() {
+	      return _extends({}, _storesNameStoreEs62['default'].getState(), _storesInitiativeStoreEs62['default'].getState());
+	    }
+	  }]);
+
+	  return InitiativeList;
+	})(React.Component);
+
+	exports['default'] = (0, _altUtilsConnectToStores2['default'])(InitiativeList);
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }
 /******/ ]);
