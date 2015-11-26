@@ -48,7 +48,7 @@ class InitiativeList extends React.Component {
   }
 
   render() {
-    var initiatives = this.props.initiatives.map(initiative => {
+    var initiatives = _.sortBy(this.props.initiatives, 'result').map(initiative => {
       return (<Initiative key={initiative.id} id={initiative.id} name={initiative.name} result={initiative.result} />);
     });
     return <div id="initiative">
