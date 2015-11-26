@@ -13,6 +13,7 @@ $LOAD_PATH.unshift File.expand_path(File.join("..", "app"), File.dirname(__FILE_
 Mongoid.load!("./mongoid.yml")
 
 require "models/roll"
+require "models/initiative"
 require "controllers/application_controller"
 require "controllers/api_controller"
 

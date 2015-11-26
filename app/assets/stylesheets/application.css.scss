@@ -45,6 +45,22 @@ h1 {
     }
   }
 
+  #initiative {
+    table {
+      line-height: 300%;
+      width: 100%;
+      border: 1px solid black;
+      border-collapse: collapse;
+      margin-top: 0;
+      margin-bottom: 0;
+      td {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        font-size: 300%;
+      }
+    }
+  }
+
   #results {
     margin-top: 0.5em;
     padding-top: 0.5em;
@@ -76,7 +92,7 @@ h1 {
     flex: 3 1 0;
   }
 
-  #roller {
+  #roller, #initiative {
     width: 100%;
     flex: 1 1 0;
     padding: 1em;
@@ -84,6 +100,14 @@ h1 {
       flex: 0 1 auto;
       align-self: flex-end;
       width: 60%;
+    }
+  }
+
+  #initiative table {
+    width: 60%;
+    align-self: flex-end;
+    td {
+      font-size: 1em;
     }
   }
 }
@@ -119,7 +143,7 @@ h1 {
   }
 }
 
-#roller {
+#roller, #initiative {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -155,6 +179,16 @@ h1 {
       border: 1px solid #444;
       border-radius: 0.3em;
       flex: 3 1 0;
+    }
+  }
+  table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    td {
+      border-left: 1px solid black;
+      border-right: 1px solid black;
     }
   }
 }
