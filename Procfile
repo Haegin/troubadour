@@ -1,3 +1,3 @@
-web: bundle exec rackup -p $PORT
+web: rackup
 js: webpack --watch
 

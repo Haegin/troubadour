@@ -1,7 +1,7 @@
 import rollActions from '../actions/rollActions.es6';
 import nameActions from '../actions/nameActions.es6';
 import nameStore from '../stores/nameStore.es6';
-import connectToStores from 'alt/utils/connectToStores';
+import { connect } from 'alt-react';
 import NumberInput from './numberInput.jsx';
 import TextInput from './textInput.jsx';
 
@@ -30,14 +30,6 @@ class Roller extends React.Component {
     nameActions.setName(name);
   }
 
-  static getStores() {
-    return [nameStore];
-  }
-
-  static getPropsFromStores() {
-    return nameStore.getState()
-  }
-
   render() {
     return <div id="roller">
       <h2>Roll</h2>
@@ -52,4 +44,11 @@ class Roller extends React.Component {
   }
 }
 
-export default connectToStores(Roller)
+export default connect(Roller, {
+  listenTo() {
+    return [nameStore];
+  },
+  getProps() {
+    return nameStore.getState();
+  }
+})

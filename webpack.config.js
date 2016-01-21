@@ -27,5 +27,6 @@ module.exports = {
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
       React: 'react/addons'
     })
-  ]
+  ],
+  devtool: "#cheap-module-eval-source-map"
 };
