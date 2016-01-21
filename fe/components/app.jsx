@@ -1,8 +1,8 @@
+import React from 'react';
+
 import Results from './results.jsx';
 import Roller from './roller.jsx';
 import InitiativeList from './initiativeList.jsx';
-import Router from 'react-router';
-var RouteHandler = Router.RouteHandler;
 
 export default class App extends React.Component {
   render() {

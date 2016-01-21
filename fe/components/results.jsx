@@ -1,5 +1,7 @@
+import { connect } from 'alt-react';
+import React from 'react';
+
 import Roll from './roll.jsx';
-import connectToStores from 'alt/utils/connectToStores';
 import rollStore from '../stores/rollStore.es6';
 import rollActions from '../actions/rollActions.es6';
 
@@ -26,14 +28,6 @@ class Results extends React.Component {
     };
   }
 
-  static getStores() {
-    return [rollStore];
-  }
-
-  static getPropsFromStores() {
-    return rollStore.getState()
-  }
-
   render() {
     var rolls = this.props.rolls.map(roll => {
       return (<Roll key={roll.id} id={roll.id} roller={roll.roller} results={roll.results} target={roll.target} successes={roll.successes} />);
@@ -41,11 +35,22 @@ class Results extends React.Component {
     return <div id="results">
       <h2>Results</h2>
       <table id="rolls">
-      <tr><th>Person</th><th className="optional">Results</th><th>Target</th><th>Successes</th></tr>
-      {rolls}
+        <thead>
+          <tr><th>Person</th><th className="optional">Results</th><th>Target</th><th>Successes</th></tr>
+        </thead>
+        <tbody>
+          {rolls}
+        </tbody>
     </table>
   </div>;
   }
 }
 
-export default connectToStores(Results)
+export default connect(Results, {
+  listenTo() {
+    return [rollStore];
+  },
+  getProps() {
+    return rollStore.getState();
+  }
+})

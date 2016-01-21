@@ -1,18 +1,12 @@
+import { connect } from 'alt-react';
+import React from 'react';
 import classnames from 'classnames';
+
 import nameStore from '../stores/nameStore.es6';
-import connectToStores from 'alt/utils/connectToStores';
 
 class Initiative extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  static getStores() {
-    return [nameStore];
-  }
-
-  static getPropsFromStores() {
-    return { currentUser: nameStore.getState() };
   }
 
   render() {
@@ -26,4 +20,11 @@ class Initiative extends React.Component {
   }
 }
 
-export default connectToStores(Initiative)
+export default connect(Initiative, {
+  listenTo() {
+    return [nameStore];
+  },
+  getProps() {
+    return { currentUser: nameStore.getState() };
+  }
+});

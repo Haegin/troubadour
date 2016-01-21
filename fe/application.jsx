@@ -1,13 +1,10 @@
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route } from 'react-router';
 import App from './components/app.jsx';
-import Router from 'react-router';
 
-var Route = Router.Route;
-
-var routes = (
-  <Route name="rolls" path="/" handler={App}>
-  </Route>
-);
-
-Router.run(routes, function(Handler, state) {
-  React.render(<Handler params={state.params} />, document.getElementById("container"));
-});
+render((
+  <Router>
+    <Route path="/" component={App}></Route>
+  </Router>
+), document.getElementById("container"));

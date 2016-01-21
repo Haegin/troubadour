@@ -1,25 +1,16 @@
+import { connect } from 'alt-react';
+import React from 'react';
+
+import NumberInput from './numberInput.jsx';
+import Initiative from './initiative.jsx';
 import nameStore from '../stores/nameStore.es6';
 import initiativeStore from '../stores/initiativeStore.es6';
 import initiativeActions from '../actions/initiativeActions.es6';
-import connectToStores from 'alt/utils/connectToStores';
-import NumberInput from './numberInput.jsx';
-import Initiative from './initiative.jsx';
 
 class InitiativeList extends React.Component {
   constructor(props) {
     super(props);
     initiativeActions.listInitiatives();
-  }
-
-  static getStores() {
-    return [nameStore, initiativeStore];
-  }
-
-  static getPropsFromStores() {
-    return {
-      ...nameStore.getState(),
-      ...initiativeStore.getState()
-    }
   }
 
   componentDidMount() {
@@ -55,7 +46,9 @@ class InitiativeList extends React.Component {
       <h2>Initiative</h2>
       <NumberInput ref="bonus" name="Bonus" onChange={this.changeBonus.bind(this)} default={this.props.bonus} max={5} />
       <table>
-        {initiatives}
+        <tbody>
+          {initiatives}
+        </tbody>
       </table>
       <p className="button">
         <input type="button" onClick={this.roll.bind(this)} value="Fight!" name="roll" />
@@ -64,4 +57,14 @@ class InitiativeList extends React.Component {
   }
 }
 
-export default connectToStores(InitiativeList)
+export default connect(InitiativeList, {
+  listenTo() {
+    return [nameStore, initiativeStore];
+  },
+  getProps() {
+    return {
+      ...nameStore.getState(),
+      ...initiativeStore.getState(),
+    };
+  }
+})

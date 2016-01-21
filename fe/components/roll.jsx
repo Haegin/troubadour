@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import React from 'react';
 
 export default class Roll extends React.Component {
   constructor(props) {
