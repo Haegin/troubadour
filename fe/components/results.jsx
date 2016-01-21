@@ -1,5 +1,7 @@
-import Roll from './roll.jsx';
 import { connect } from 'alt-react';
+import React from 'react';
+
+import Roll from './roll.jsx';
 import rollStore from '../stores/rollStore.es6';
 import rollActions from '../actions/rollActions.es6';
 

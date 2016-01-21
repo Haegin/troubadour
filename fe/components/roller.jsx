@@ -1,9 +1,11 @@
+import { connect } from 'alt-react';
+import React from 'react';
+
+import NumberInput from './numberInput.jsx';
+import TextInput from './textInput.jsx';
 import rollActions from '../actions/rollActions.es6';
 import nameActions from '../actions/nameActions.es6';
 import nameStore from '../stores/nameStore.es6';
-import { connect } from 'alt-react';
-import NumberInput from './numberInput.jsx';
-import TextInput from './textInput.jsx';
 
 class Roller extends React.Component {
   constructor(props) {

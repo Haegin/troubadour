@@ -1,9 +1,11 @@
+import { connect } from 'alt-react';
+import React from 'react';
+
+import NumberInput from './numberInput.jsx';
+import Initiative from './initiative.jsx';
 import nameStore from '../stores/nameStore.es6';
 import initiativeStore from '../stores/initiativeStore.es6';
 import initiativeActions from '../actions/initiativeActions.es6';
-import { connect } from 'alt-react';
-import NumberInput from './numberInput.jsx';
-import Initiative from './initiative.jsx';
 
 class InitiativeList extends React.Component {
   constructor(props) {

@@ -14,7 +14,11 @@ module.exports = {
       {
         test: /\.(jsx|es6)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015', 'stage-2', 'react']
+        }
       }
     ]
   },
@@ -24,8 +28,7 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
-      React: 'react/addons'
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
   ],
   devtool: "#cheap-module-eval-source-map"

@@ -1,6 +1,8 @@
-import classnames from 'classnames';
-import nameStore from '../stores/nameStore.es6';
 import { connect } from 'alt-react';
+import React from 'react';
+import classnames from 'classnames';
+
+import nameStore from '../stores/nameStore.es6';
 
 class Initiative extends React.Component {
   constructor(props) {
