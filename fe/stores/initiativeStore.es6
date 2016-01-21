@@ -10,7 +10,7 @@ class InitiativeStore {
     this.bindAction(initiativeActions.roll, this.roll);
 
     this.state = {
-      bonus: localStorage.getItem("initiativeMod") || 3,
+      bonus: parseInt(localStorage.getItem("initiativeMod")) || 3,
       initiatives: []
     }
 

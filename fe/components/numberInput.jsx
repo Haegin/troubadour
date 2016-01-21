@@ -20,6 +20,7 @@ export default class NumberInput extends React.Component {
     if (newValue < 0)
       newValue = this.range() + newValue
     newValue = newValue + this.props.min;
+    this.props.onChange(newValue);
     this.setState({value: newValue});
   }
 
@@ -75,7 +76,8 @@ NumberInput.defaultProps = {
   min: 1,
   max: 10,
   default: 5,
-  step: 1
+  step: 1,
+  onChange: (i => {})
 }
 
 NumberInput.propTypes = {
@@ -83,5 +85,6 @@ NumberInput.propTypes = {
   max: React.PropTypes.number,
   default: React.PropTypes.number,
   step: React.PropTypes.number,
-  name: React.PropTypes.string
+  name: React.PropTypes.string,
+  onChange: React.PropTypes.func
 }

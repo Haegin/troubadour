@@ -33,18 +33,26 @@ class InitiativeList extends React.Component {
     initiativeActions.roll(name, bonus);
   }
 
-  changeBonus(evt) {
-    let bonus = this.refs.bonus.value();
-    initiativeActions.setBonus(bonus);
-  }
-
   render() {
     var initiatives = _.sortBy(this.props.initiatives, 'result').map(initiative => {
-      return (<Initiative key={initiative.id} id={initiative.id} name={initiative.name} result={initiative.result} />);
+      return (
+        <Initiative
+          key={initiative.id}
+          id={initiative.id}
+          name={initiative.name}
+          result={initiative.result}
+        />
+      );
     });
     return <div id="initiative">
       <h2>Initiative</h2>
-      <NumberInput ref="bonus" name="Bonus" onChange={this.changeBonus.bind(this)} default={this.props.bonus} max={5} />
+      <NumberInput
+        ref="bonus"
+        name="Bonus"
+        onChange={initiativeActions.setBonus}
+        default={this.props.bonus}
+        max={5}
+      />
       <table>
         <tbody>
           {initiatives}
